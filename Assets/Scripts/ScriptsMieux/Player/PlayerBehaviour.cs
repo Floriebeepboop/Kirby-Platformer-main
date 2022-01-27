@@ -9,20 +9,20 @@ public class PlayerBehaviour : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private new Rigidbody2D rb2D;
     private Controls ctrl;
-    [SerializeField] private float jumpForce;
+    public Jumpforce JumpforceValue;
     private bool isGrounded = false;
     private float move;
 
 
     void Awake()
     {
-        GetComponent<BoxCollider2D>();
-        rb2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        anim = GetComponent<PlayerAnim>();
+        GetComponent<BoxCollider2D>();//
+        rb2D = GetComponent<Rigidbody2D>();//
+        spriteRenderer = GetComponent<SpriteRenderer>();//
+        anim = GetComponent<PlayerAnim>();//
     }
 
-    private void OnEnable()
+    private void OnEnable() // on appell les controls liés aux imputs
     {
         ctrl = new Controls();
         ctrl.Enable();
@@ -51,7 +51,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (isGrounded)
         {
             isGrounded = false;
-            rb2D.AddForce(new Vector2(0,jumpForce), ForceMode2D.Impulse);
+            rb2D.AddForce(new Vector2(0, JumpforceValue.jumpForce), ForceMode2D.Impulse);
 
             anim.OnJump();//joue l'anim depuis le script PlayerAnim
         }

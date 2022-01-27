@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class MyPlayer : MonoBehaviour
-{/*
+{
     [SerializeField] private float speed; // private seulement utilisable dans ce script, float--> nombre decimal, Speed--> nom de la valeur
     [SerializeField] private float maxSpeed;//scriptableobj
     [SerializeField] private float jumpForce;
@@ -114,7 +114,7 @@ public class MyPlayer : MonoBehaviour
         transform.position = respawnPoint;
         anim.SetBool("isOnFire", false);
         Debug.Log("Respawn");
-    } */
+    } 
 }
 
 /*si le collider du joueur touche celui du feu 

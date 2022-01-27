@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class Velocity : Rigidbody
 {
-    public float speed;
+    public Speed speed;
+    private new Rigidbody2D rb2D;
+    public MaxSpeed maxspeed;
+    private float move;
 
-    /*public override void Move(Vector2 direction)
+    void Awake()
     {
-        rb.velocity = direction.normalized * speed;
-    }*/
+        rb2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        var isRunning = Mathf.Abs(rb2D.velocity.x);
+        if (isRunning < maxspeed.maxspeed)
+        {
+            rb2D.AddForce(new Vector2(speed.speed * move, 0));
+        }
+    }
 }
