@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
-    private Animator anim;
+    private Animator anim;//on reccupere l'animator associé au joueur
 
 
     private void Awake()
@@ -12,7 +12,7 @@ public class PlayerAnim : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Run()//move = obj.ReadValue<float>(); spriteRenderer.flipX = (move< 0);
+    public void Run()//si on court on active l'anim de run
     {
         anim.SetBool("run", true);
     }
@@ -22,27 +22,21 @@ public class PlayerAnim : MonoBehaviour
         anim.SetBool("run", false);
     }
 
-    public void OnJump()
+    public void OnJump()//
     {
         anim.SetBool("Jump", true);
     }
 
-    void Update()
+    public void NotJump()
     {
 
-        anim.SetBool("Jump", false);
-        
+         anim.SetBool("Jump", false);
 
     }
 
-    public void RespawnTimer()
+    public void RespawnTimer()//animation de respawn du joueur 
     {
-        anim.SetBool("isOnFire", false);
-    }
-
-    public void OnDie()
-    {
-
+        anim.SetBool("isOnFire", false);//le feu(piege) se désactive
     }
 
 }

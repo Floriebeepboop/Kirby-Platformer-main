@@ -7,6 +7,8 @@ public class Trap : MonoBehaviour
 {
    //public bool fireIsTrigger = false;
     private Animator trapAnim;
+    public Jumpforce JumpforceValue;
+    public Speed speed;
     private void Start()
     {
         GetComponent<BoxCollider2D>().isTrigger = true; //setting boxcollider trigger by default
@@ -15,17 +17,18 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag( "Player"))
+        if(collision.CompareTag( "Player"))//on regarde" si il y a collision entre l'object qui porte le tag "player" et le collider du trap
         {
             //fireIsTrigger = true;
             trapAnim.SetBool("isOnFire", true);
-            Debug.Log($"{name}Triggered");
-
+            Debug.Log($"{name}Triggered");//affiche dans la console si jamais c'est bien trigger
+            JumpforceValue.jumpForce = 0;//on reset la jumpforce a 0, stop la '' glissade '' ?
+            speed.speed = 0;//on avance plus
         }
         else
         {
-            //Ondie();
-            trapAnim.SetBool("isOnFire", false);
+  
+            trapAnim.SetBool("isOnFire", false);//n'active pas  le bool ddans l'animator
         }
        
     }
