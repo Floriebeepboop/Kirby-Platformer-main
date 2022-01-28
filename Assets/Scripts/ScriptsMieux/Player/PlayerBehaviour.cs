@@ -23,16 +23,16 @@ public class PlayerBehaviour : MonoBehaviour
         anim = GetComponent<PlayerAnim>();//
     }
 
-    private void OnEnable() // on appell les controls liés aux imputs
+   /* private void OnEnable() // on appell les controls liés aux imputs
     {
         ctrl = new Controls();
         ctrl.Enable();
         ctrl.Main.Move.performed += MoveOnPerformed;
         ctrl.Main.Move.canceled += MoveOnCanceled;
         ctrl.Main.Jump.performed += JumpOnPerformed;
-    }
+    }*/
 
-    private void MoveOnPerformed(InputAction.CallbackContext obj)
+    public void MoveOnPerformed(InputAction.CallbackContext obj)
     {
         move = obj.ReadValue<float>();//on get 
         spriteRenderer.flipX = (move < 0);
@@ -40,13 +40,13 @@ public class PlayerBehaviour : MonoBehaviour
         anim.Run();//joue l'anim depuis le script PlayerAnim
     }
 
-    private void MoveOnCanceled(InputAction.CallbackContext obj)
+    /*public void MoveOnCanceled(InputAction.CallbackContext obj)
     {
         move = 0;
         anim.MoveOnCanceled();//joue l'anim depuis le script PlayerAnim
-    }
+    }*/
 
-    private void JumpOnPerformed(InputAction.CallbackContext obj)
+    public void JumpOnPerformed(InputAction.CallbackContext obj)
     {
 
         if (isGrounded)
